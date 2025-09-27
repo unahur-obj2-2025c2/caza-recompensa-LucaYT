@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unahur.obj2.Profugo;
+
 public class ProfugoTest {
     @Test
     public void guardaYDevuelveAtributos(){

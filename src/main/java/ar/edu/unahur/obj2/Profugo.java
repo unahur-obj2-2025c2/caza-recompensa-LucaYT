@@ -1,4 +1,4 @@
-package cazador;
+package ar.edu.unahur.obj2;
 
 public class Profugo {
 
