@@ -20,4 +20,11 @@ public abstract class Cazador {
             
         }
     }
+
+    public void intimidar(Profugo p){
+        p.disminuirInocencia();
+        intimidacionEspecifica(p);
+    }
+
+    protected abstract void intimidacionEspecifica(Profugo p);
 }

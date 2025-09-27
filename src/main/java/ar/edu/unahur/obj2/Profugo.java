@@ -32,4 +32,12 @@ public class Profugo {
         this.habilidad = Math.max(0, this.habilidad - 5);
     }
 
+    public void volverseNervioso() {
+        this.esNervioso = true;
+    }
+
+    public void dejarDeSerNervioso() {
+        this.esNervioso = false;
+    }
+
 }

@@ -20,9 +20,7 @@ public class CazadorRural extends Cazador{
         return p.esNervioso();
     }
 
-    public void intimidar(Profugo p) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'intimidar'");
+    protected void intimidacionEspecifica(Profugo p){
+        p.volverseNervioso();
     }
-
 }

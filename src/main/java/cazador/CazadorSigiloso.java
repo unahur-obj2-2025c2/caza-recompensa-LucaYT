@@ -20,9 +20,9 @@ public class CazadorSigiloso extends Cazador{
         return this.experiencia > p.getHabilidad();
     }
 
-    public void intimidar(Profugo p) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'intimidar'");
+    @Override
+    protected void intimidacionEspecifica(Profugo p) {
+        p.disminuirHabilidad();
     }
 
 }

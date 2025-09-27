@@ -12,7 +12,7 @@ public class CazadorTest {
     @Test
     public void urbanoCapturaSiExperienciaMayorYNoNervioso() {
         CazadorUrbano c = new CazadorUrbano(60);
-        Profugo p = new Profugo(40,70,false);
+        Profugo p = new Profugo(40,50,false);
         assertTrue(c.puedeCapturar(p));
     }
 
