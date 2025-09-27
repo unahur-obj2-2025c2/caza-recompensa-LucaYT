@@ -1,7 +1,23 @@
 package ar.edu.unahur.obj2;
 
-public class Cazador {
-    public Boolean cazar() {
-        return Boolean.TRUE;
+public abstract class Cazador {
+    protected int experiencia;
+
+
+    public Cazador(int experiencia) {
+        this.experiencia = experiencia;
+    }
+
+    //Condición general
+    public Boolean puedeCapturar(Profugo p) {
+        return this.experiencia > p.getInocencia() && condicionEspecifica(p);
+    }
+
+    protected abstract boolean condicionEspecifica(Profugo p);
+
+    public void capturarOIntimidar(Profugo p){
+        if(this.puedeCapturar(p)){
+            
+        }
     }
 }
