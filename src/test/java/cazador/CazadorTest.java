@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unahur.obj2.Profugo;
+import ar.edu.unahur.obj2.Zona;
 
 public class CazadorTest {
     @Test
@@ -17,10 +18,10 @@ public class CazadorTest {
     }
 
     @Test
-    public void ruralNoCapturaSiNoEsNervioso() {
+    public void ruralCapturaSiEsNervioso() {
         CazadorRural c = new CazadorRural(70);
-        Profugo p = new Profugo(40,70,false);
-        assertFalse(c.puedeCapturar(p));
+        Profugo p = new Profugo(40,70,true);
+        assertTrue(c.puedeCapturar(p));
     }
 
     @Test
@@ -56,5 +57,40 @@ public class CazadorTest {
         c.intimidar(p);
         assertEquals(Integer.valueOf(45),p.getHabilidad());
         assertEquals(Integer.valueOf(48),p.getInocencia());
+    }
+
+    @Test
+    public void cazadorSigilosoTiene1Capturado(){
+        CazadorSigiloso c = new CazadorSigiloso(70);
+        Profugo p = new Profugo(50,50,true);
+        c.intentaCapturarTest(p);
+        assertEquals(1, c.getCantCapturados());
+    }
+
+    @Test
+    public void cazadorExperienciaSubeA112(){
+        CazadorUrbano c = new CazadorUrbano(70);
+        Profugo p = new Profugo(50,20,true);
+        c.intentaCapturarTest(p);
+        c.intentaCapturarTest(p);
+        assertEquals(112, c.getExperiencia());
+    }
+
+    @Test
+    public void cazadorCaptura2ProfugosEnUnaZona(){
+        CazadorUrbano c = new CazadorUrbano(70);
+
+        Zona z = new Zona(null);
+
+        Profugo p = new Profugo(50,20,true);
+        Profugo s = new Profugo(50,20,false);
+
+        z.aniadirProfugo(p);
+        z.aniadirProfugo(s);
+
+        c.capturarEnUnaZona(z);
+        c.capturarEnUnaZona(z);
+
+        assertEquals(0, z.getProfugos());
     }
 }

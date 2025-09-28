@@ -5,8 +5,6 @@ import ar.edu.unahur.obj2.Profugo;
 
 public class CazadorRural extends Cazador{
 
-    private int experiencia;
-
     public CazadorRural(int experiencia) {
         super(experiencia);
     }
