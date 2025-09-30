@@ -93,4 +93,30 @@ public class CazadorTest {
 
         assertEquals(0, z.getProfugos());
     }
+
+    @Test
+    public void agenciaQuiereVerloTodo(){
+        CazadorUrbano cu = new CazadorUrbano(70);
+        CazadorSigiloso cs = new CazadorSigiloso(70);
+
+        Zona z = new Zona(null);
+        Profugo p = new Profugo(40,90,false);
+        Profugo pp = new Profugo(40,50,false);
+        Profugo s = new Profugo(40,20,true);
+
+        JefeAgencia j = new JefeAgencia(null);
+
+        z.aniadirProfugo(p);
+        z.aniadirProfugo(s);
+        z.aniadirProfugo(pp);
+        j.aniadirCazador(cu);
+        j.aniadirCazador(cs);
+
+        cu.capturarEnUnaZona(z);
+        cs.capturarEnUnaZona(z);
+
+        assertEquals(3, j.getCantCapturados());
+        assertEquals(p, j.getElProfugoMasHabilCapturado());
+        assertEquals(cu, j.getElCazadorMasHabil());
+    }
 }

@@ -1,15 +1,20 @@
 package ar.edu.unahur.obj2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Profugo {
 
-    private boolean esNervioso;
-    private int habilidad;
-    private int inocencia;
+    protected boolean esNervioso;
+    protected int habilidad;
+    protected int inocencia;
+    private List<IEntrenamientos> entrenamientos;
 
     public Profugo(int inocencia, int habilidad, boolean esNervioso) {
         this.inocencia = inocencia;
         this.habilidad = habilidad;
         this.esNervioso = esNervioso;
+        this.entrenamientos = new ArrayList<>();
     }
 
     public Integer getInocencia() {
@@ -25,7 +30,14 @@ public class Profugo {
     }
 
     public void disminuirInocencia() {
-        this.inocencia = Math.max(0, this.inocencia - 2);
+        boolean tieneProteccionLegal = this.entrenamientos.stream().anyMatch(e -> e.tieneProteccionLegal());
+
+        if(tieneProteccionLegal){
+            this.inocencia = Math.max(40, this.inocencia - 2);
+        }
+        else{
+            this.inocencia = Math.max(0, this.inocencia - 2);
+        }
     }
 
     public void disminuirHabilidad() {
@@ -33,11 +45,22 @@ public class Profugo {
     }
 
     public void volverseNervioso() {
-        this.esNervioso = true;
+        boolean esElite = this.entrenamientos.stream().anyMatch(e -> e.esElite());
+
+        if (!esElite) {
+            this.esNervioso = true;
+        }
     }
 
     public void dejarDeSerNervioso() {
         this.esNervioso = false;
     }
 
+    public void aniadirEntrenamiento(IEntrenamientos entrenamiento){
+        if (this.entrenamientos.contains(entrenamiento)){}
+        else{
+            this.entrenamientos.add(entrenamiento);
+            entrenamiento.efecto(this);
+        }
+    }
 }

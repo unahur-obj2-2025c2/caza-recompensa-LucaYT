@@ -1,7 +1,10 @@
-package ar.edu.unahur.obj2;
+package cazador;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ar.edu.unahur.obj2.Profugo;
+import ar.edu.unahur.obj2.Zona;
 
 public abstract class Cazador {
 
@@ -59,9 +62,9 @@ public abstract class Cazador {
         return this.experiencia > p.getInocencia() && condicionEspecifica(p);
     }
 
-    // public List<Profugo> getCapturados(){
-    //     return this.profugosCapturados;
-    // }
+    public List<Profugo> getCapturados(){
+        return this.profugosCapturados;
+    }
 
     public void intentaCapturarTest(Profugo p){
         if(this.puedeCapturar(p)){
